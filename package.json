@@ -1,0 +1,27 @@
+{
+  "name": "react-native-animate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PLDaily/react-native-animate.git"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "PLDaily <pcd12321@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PLDaily/react-native-animate/issues"
+  },
+  "homepage": "https://github.com/PLDaily/react-native-animate#readme",
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-native": "^0.55.4"
+  }
+}
