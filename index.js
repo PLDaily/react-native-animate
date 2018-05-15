@@ -1,16 +1,8 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  AppRegistry,
-  StyleSheet,
   Text,
   View,
-  Animated,
-  Image,
-  TouchableHighlight,
-  ScrollView,
-  Easing
 } from 'react-native';
 import Opacity from './src/Opacity';
 
@@ -18,10 +10,17 @@ class Animate extends Component {
   static propTypes = {
     type: PropTypes.string.isRequired,
     duration: PropTypes.number,
+    easing: PropTypes.string,
+    iterationCount: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ])
   };
 
   static defaultProps = {
     duration: 5000,
+    easing: 'linear',
+    iterationCount: 1
   };
 
   render() {

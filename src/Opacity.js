@@ -7,21 +7,36 @@ import {
 class Opacity extends Component {
   constructor() {
     super()
-    this.animatedValue = new Animated.Value(0)
+    this.animatedValue = new Animated.Value(0);
   }
   componentDidMount() {
     this.animate()
   }
-  animate() {
-    this.animatedValue.setValue(0)
+  animate(iteration, callback) {
+    const { easing, duration, iterationCount } = this.props;
+    let currentIteration = iteration || 0;
+
+    this.animatedValue.setValue(0);
+
     Animated.timing(
       this.animatedValue,
       {
         toValue: 1,
-        duration: this.props.duration,
-        easing: Easing.linear
+        duration: duration,
+        easing: Easing[easing],
+        isInteraction: iterationCount <= 1,
       }
-    ).start()
+    ).start(endState => {
+      currentIteration += 1;
+      if (
+        endState.finished &&
+        (iterationCount === 'infinite' || currentIteration < iterationCount)
+      ) {
+        this.animate(currentIteration, callback);
+      } else if (callback) {
+        callback(endState);
+      }
+    })
   }
   render() {
     const opacity = this.animatedValue.interpolate({
